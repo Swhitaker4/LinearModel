@@ -80,23 +80,37 @@ models appears to be the better model because it has a lower Residual standard e
 ## SIMS~ARM+GRIP
 
 
-## Model Comparisons
-## R Markdown
+```{r}
+model.3 <- lm(SIMS~ARM + GRIP ,data=data)
+summary.lm(model.3)
+``` 
+model3 appears to be the better model because the adjusted R squared score is more than model1 or model2, and also scored lower in the Residual standard error than model 1 or 2.
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+## prediction 
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+```{r}
+newData=data.frame(GRIP=94,ARM=88)
+predict.lm(model.3,newData,interval="prediction")
 ```
+fit is he predicted SIMS score when you have GRIP strength of 94 and an ARM strength of 88.
 
-## Including Plots
+the lwr and upr are the 95% confidence intervals for predicted SIMS score when the GRIP score is 94 and ARM strength of 88.
 
-You can also embed plots, for example:
+## inferential test 
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+This is the inferential test to compare models.
+
+The test is anova 
+
+$H_0$: There is no difference in how well each model fit the data between models (model2,model3)
+$H_A$:There is a difference in how well each models fits the data between models (model2,model3)
+
+```{r}
+anova(model.2,model.3)
 ```
+## Conclusion
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+The P-value is 0.000000001495 which is very low.
+
+We reject th null hypothesis because the p value is too low; there is a difference between model2 and model3, we have evidence that model3 is better than model2.
+
