@@ -43,6 +43,7 @@ predict.lm(model.1,newData,interval="prediction")
 ```
 
 
+
 ##SIMS~GRIP
 ```{r}
 plot(SIMS~GRIP,data=data)
@@ -52,7 +53,23 @@ This is a generic scatters plot of SIMS vs ARM
 ```{r}
 cor(SIMS~GRIP,data=data)
 ```
+the greater the pounds of the GRIP force(GRIP), the greater the simulation(SIMS)
+```{r}
+model.2 <-lm(SIMS~GRIP,data=data)
+summary.lm(model.2)
+```
+The equation is -4.089675 + 0.045463 *GRIP
+```{r}
+basicNN <-ggplot(data,aes(y=SIMS,x=GRIP))
+```
 
+```{r}
+basicNN + geom_point() + geom_smooth(method=lm)
+```
+
+This scatter plot shows the blue line as an indicator of which is a best linear fit t predict what an average sim response would be for any grip strength.
+
+It also shows all of the data points of each individual score and corresponding grip strength.
 
 ## SIMS~ARM+GRIP
 
