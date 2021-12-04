@@ -44,6 +44,14 @@ predict.lm(model.1,newData,interval="prediction")
 
 
 ##SIMS~GRIP
+```{r}
+plot(SIMS~GRIP,data=data)
+```
+
+This is a generic scatters plot of SIMS vs ARM
+```{r}
+cor(SIMS~GRIP,data=data)
+```
 
 
 ## SIMS~ARM+GRIP
