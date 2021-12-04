@@ -71,6 +71,12 @@ This scatter plot shows the blue line as an indicator of which is a best linear 
 
 It also shows all of the data points of each individual score and corresponding grip strength.
 
+model(SIMS~ARM) has slighty lighter Residual standard error score of 1.226 while model2(SIMS~GRIP) is scored at 1.295
+
+model1(SIMS~ARM) has a higher adjusted r squared score of 0.467 while model2(SIMS~GRIP)scored lower at 0.4053
+
+models appears to be the better model because it has a lower Residual standard error score than model1 and also has a higher adjusted r square score than model2
+
 ## SIMS~ARM+GRIP
 
 
