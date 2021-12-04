@@ -18,6 +18,29 @@ Form three regression models; Model1 is SIMS~ARM, Model2 is SIMS~GRIP, and Model
 
 ## SIMS~ARM 
 
+```{r}
+plot(SIMS~ARM,data=data)
+```
+
+This scatter plot shows that the greater the the pounds of arm force(ARM), the greater simulation(SIMS)
+
+
+```{r}
+cor(SIMS~ARM,data=data)
+```
+
+This number represents the correlation between sims and arm force.Correlation is a measure of the linear association between the two variables. 
+
+```{r}
+model.1 <- lm(SIMS~ARM,data=data)
+summary.lm(model.1)
+```
+The equation is SIMS = -.4.095160 + 0.054563 * ARM
+
+```{r}
+newData= data.frame(GRIP=94,ARM=88)
+predict.lm(model.1,newData,interval="prediction")
+```
 
 
 ##SIMS~GRIP
